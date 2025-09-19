@@ -1298,4 +1298,48 @@ p, span, li {
         padding: var(--spacing-md);
         min-height: 30vh;
     }
+
 }
+
+
+
+.plant-icon {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center; /* Ensures centered cropping */
+}
+
+/* Adjust container padding to give more space to images */
+.plant-icon-container {
+    padding: var(--spacing-lg); /* Reduced from --spacing-xl */
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    box-shadow: var(--shadow-lg);
+    animation: float 3s ease-in-out infinite;
+    backdrop-filter: blur(10px);
+}
+
+@media (max-width: 768px) {
+    .plant-icon-container {
+        padding: var(--spacing-sm); /* Much less padding on mobile */
+    }
+
+    .plant-icon {
+        width: 150px; /* Larger than current 120px */
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .plant-icon-container {
+        padding: 8px; /* Minimal padding */
+    }
+
+    .plant-icon {
+        width: 130px; /* Larger than current 100px */
+        height: 130px;
+    }
+}
+
