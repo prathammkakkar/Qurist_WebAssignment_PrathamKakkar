@@ -199,7 +199,7 @@ p, span, li {
     right: 0;
     width: 50%;
     height: 100%;
-    background: url(/assets/IMG_0032_1.jpg) no-repeat center 60%/cover;
+    background: url(assets/IMG_0032_1.jpg) no-repeat center 60%/cover;
     z-index: 1;
     filter: brightness(1.1) contrast(1.05);
 }
@@ -535,11 +535,11 @@ p, span, li {
 }
 
 .thc-half {
-    background-image: url('/assets/thc.jpeg');
+    background-image: url('assets/thc.jpeg');
 }
 
 .cbd-half {
-    background-image: url('/assets/cbd.jpeg');
+    background-image: url('assets/cbd.jpeg');
 }
 
 .compound-half::before {
@@ -1327,3 +1327,4 @@ p, span, li {
         min-height: 30vh;
     }
 }
+
