@@ -199,7 +199,7 @@ p, span, li {
     right: 0;
     width: 50%;
     height: 100%;
-    background: url(assets/IMG_0032_1.jpg) no-repeat center 60%/cover;
+    background: url(/assets/IMG_0032_1.jpg) no-repeat center 60%/cover;
     z-index: 1;
     filter: brightness(1.1) contrast(1.05);
 }
@@ -323,7 +323,7 @@ p, span, li {
     margin: 0 auto;
 }
 
-/* Plant Parts Swiper Section - From cannabis-102.css with fixed mobile circular photo crop */
+/* Plant Parts Swiper Section - FIXED for mobile circular photo crop */
 .plant-parts-swiper {
     background: var(--qurist-grey);
     padding: 0;
@@ -336,12 +336,13 @@ p, span, li {
     height: 100vh;
 }
 
+/* CRITICAL FIX: Allow content to be visible instead of hidden */
 .plant-parts-slider .swiper-slide {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow: visible; /* CHANGED FROM 'hidden' TO 'visible' - This fixes the top clipping */
 }
 
 .slide-background {
@@ -436,10 +437,12 @@ p, span, li {
     color: var(--text-dark);
 }
 
+/* ENHANCED: Add breathing room around circular images */
 .slide-visual {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 30px 0; /* Added vertical padding for safety */
 }
 
 .plant-icon-container {
@@ -455,7 +458,8 @@ p, span, li {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    object-fit: cover;
+    object-fit: contain; /* CHANGED FROM 'cover' TO 'contain' - Prevents cropping */
+    object-position: center; /* Ensures centered positioning */
 }
 
 /* Swiper Navigation Customization */
@@ -531,11 +535,11 @@ p, span, li {
 }
 
 .thc-half {
-    background-image: url('assets/thc.jpeg');
+    background-image: url('/assets/thc.jpeg');
 }
 
 .cbd-half {
-    background-image: url('assets/cbd.jpeg');
+    background-image: url('/assets/cbd.jpeg');
 }
 
 .compound-half::before {
@@ -975,11 +979,12 @@ p, span, li {
 
     .slide-visual {
         order: -1;
+        padding: 40px 0; /* More space on tablets */
     }
 
     .plant-icon {
-        width: 150px;
-        height: 150px;
+        width: 160px; /* Slightly larger than original 150px */
+        height: 160px;
     }
 
     .compounds-split-screen {
@@ -1042,7 +1047,7 @@ p, span, li {
         font-size: 1.1rem;
     }
 
-    /* Plant parts swiper mobile - fixed circular photo crop */
+    /* Plant parts swiper mobile - FIXED circular photo crop */
     .slide-title {
         font-size: 2rem;
     }
@@ -1053,8 +1058,8 @@ p, span, li {
 
     .slide-content {
         padding: var(--spacing-md);
-        margin: 0 60px;
-        margin-bottom: 80px;
+        margin: 30px 40px; /* Adjusted margins for better spacing */
+        margin-bottom: 120px; /* Increased bottom margin */
     }
 
     .slide-features {
@@ -1066,14 +1071,20 @@ p, span, li {
         padding: var(--spacing-sm);
     }
 
-    /* Fixed circular photo container for mobile */
+    /* ENHANCED: More space around images on mobile */
+    .slide-visual {
+        padding: 50px 0; /* Increased padding on mobile */
+    }
+
+    /* FIXED: Better container sizing for mobile */
     .plant-icon-container {
-        padding: var(--spacing-lg);
+        padding: var(--spacing-sm); /* Reduced padding to give more space to image */
+        margin: 20px 0; /* Added vertical margin for extra space */
     }
 
     .plant-icon {
-        width: 120px;
-        height: 120px;
+        width: 150px; /* Increased from original 120px */
+        height: 150px;
     }
 
     .plant-parts-slider .swiper-button-next,
@@ -1112,42 +1123,42 @@ p, span, li {
     .compounds-comparison {
         padding: 0 var(--spacing-sm);
     }
-    
+
     .comparison-table {
         min-width: 500px;
         font-size: 0.8rem;
     }
-    
+
     .table-header {
         grid-template-columns: 100px 1fr 1fr;
     }
-    
+
     .table-row {
         grid-template-columns: 100px 1fr 1fr;
     }
-    
+
     .header-cell {
         padding: var(--spacing-sm);
     }
-    
+
     .compound-icon img {
         width: 25px;
         height: 25px;
     }
-    
+
     .header-cell h3 {
         font-size: 1rem;
     }
-    
+
     .row-label {
         padding: var(--spacing-xs);
         font-size: 0.75rem;
     }
-    
+
     .cell {
         padding: var(--spacing-xs);
     }
-    
+
     .cell p {
         font-size: 0.75rem;
     }
@@ -1181,27 +1192,27 @@ p, span, li {
         gap: var(--spacing-lg);
         padding: 0 var(--spacing-sm);
     }
-    
+
     .myth-fact-card {
         height: 300px;
         max-width: 100%;
     }
-    
+
     .card-front,
     .card-back {
         padding: var(--spacing-md);
     }
-    
+
     .myth-icon,
     .fact-icon {
         font-size: 2rem;
     }
-    
+
     .card-front h3,
     .card-back h3 {
         font-size: 1.1rem;
     }
-    
+
     .card-front p,
     .card-back p {
         font-size: 0.9rem;
@@ -1223,6 +1234,17 @@ p, span, li {
 }
 
 @media (max-width: 480px) {
+    /* ENHANCED: Remove restrictive height constraints on very small screens */
+    .plant-parts-slider {
+        height: auto; /* Changed from fixed 100vh */
+        min-height: 100vh;
+    }
+    
+    .plant-parts-swiper {
+        min-height: auto; /* Allow flexible height */
+        padding: 20px 0; /* Add breathing room */
+    }
+
     .hero-title {
         font-size: 2.5rem;
         font-weight: 700; /* Both words bold */
@@ -1240,20 +1262,20 @@ p, span, li {
     .comparison-table {
         min-width: 300px;
     }
-    
+
     .table-header,
     .table-row {
         grid-template-columns: 80px 1fr 1fr;
     }
-    
+
     .compounds-comparison {
         margin: 0 -var(--spacing-sm);
     }
 
     .slide-content {
         padding: var(--spacing-sm);
-        margin: 0 20px;
-        margin-bottom: 100px;
+        margin: 30px 20px; /* Adjusted margins */
+        margin-bottom: 140px; /* Increased bottom margin */
     }
 
     .slide-features {
@@ -1265,14 +1287,20 @@ p, span, li {
         padding: var(--spacing-xs) var(--spacing-sm);
     }
 
-    /* Fixed circular photo for very small screens */
+    /* ENHANCED: Maximum space for circular images on very small screens */
+    .slide-visual {
+        padding: 60px 0; /* Even more padding on very small screens */
+    }
+
+    /* FIXED: Optimal sizing for very small screens */
     .plant-icon-container {
-        padding: var(--spacing-md);
+        padding: 8px; /* Minimal but sufficient padding */
+        margin: 25px 0; /* Extra vertical margin for safety */
     }
 
     .plant-icon {
-        width: 100px;
-        height: 100px;
+        width: 130px; /* Increased from original 100px */
+        height: 130px;
     }
 
     .myths-grid {
@@ -1298,48 +1326,4 @@ p, span, li {
         padding: var(--spacing-md);
         min-height: 30vh;
     }
-
 }
-
-
-
-.plant-icon {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center; /* Ensures centered cropping */
-}
-
-/* Adjust container padding to give more space to images */
-.plant-icon-container {
-    padding: var(--spacing-lg); /* Reduced from --spacing-xl */
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 50%;
-    box-shadow: var(--shadow-lg);
-    animation: float 3s ease-in-out infinite;
-    backdrop-filter: blur(10px);
-}
-
-@media (max-width: 768px) {
-    .plant-icon-container {
-        padding: var(--spacing-sm); /* Much less padding on mobile */
-    }
-
-    .plant-icon {
-        width: 150px; /* Larger than current 120px */
-        height: 150px;
-    }
-}
-
-@media (max-width: 480px) {
-    .plant-icon-container {
-        padding: 8px; /* Minimal padding */
-    }
-
-    .plant-icon {
-        width: 130px; /* Larger than current 100px */
-        height: 130px;
-    }
-}
-
